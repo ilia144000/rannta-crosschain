@@ -1,13 +1,11 @@
-export interface SecurityPolicy {
-  ownerAddress: string;
-  minSignatures: number;
-  emergencyPauseAuthority: string;
-  allowSelfDestruct: boolean;
+export interface RuntimeControlReferences {
+  primaryReference: string | null;
+  signerReference: string | null;
+  recoveryReference: string | null;
 }
 
-export const securityPolicy: SecurityPolicy = {
-  ownerAddress: '0x0000000000000000000000000000000000000000',
-  minSignatures: 1,
-  emergencyPauseAuthority: 'OWNER_ONLY',
-  allowSelfDestruct: false
+export const runtimeControlReferences: RuntimeControlReferences = {
+  primaryReference: null,
+  signerReference: null,
+  recoveryReference: null
 };
