@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "types": ["jest"],
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "lib": ["es2020", "dom"]
+  },
+  "include": ["tests/**/*.ts", "packages/**/*.ts"]
+}

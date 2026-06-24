@@ -1,3 +1,5 @@
+import { WarpIntent, RoutePlan } from './models';
+
 export class RouteGraphEngine {
   // Deterministic calculation based on static capability data
   static planRoute(intent: WarpIntent): RoutePlan {
