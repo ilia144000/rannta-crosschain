@@ -1,6 +1,16 @@
-import { MessageEnvelope } from '@rannta-crosschain/core';
+import { MessageEnvelope, ProofSchema } from '@rannta-crosschain/core';
+
+export interface NativeEvidenceRequest {
+  routeId: string;
+  sourceReference: string;
+}
+
+export interface NativeEvidenceResult {
+  accepted: boolean;
+  proof: ProofSchema | null;
+}
 
 export interface NodeIntegrationProxy {
-  verifyNativeLock(txHash: string): Promise<boolean>;
+  verifyNativeEvidence(request: NativeEvidenceRequest): Promise<NativeEvidenceResult>;
   reportSettlement(envelope: MessageEnvelope): Promise<void>;
 }
