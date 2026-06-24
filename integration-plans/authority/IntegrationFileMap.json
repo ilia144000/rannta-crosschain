@@ -1,0 +1,13 @@
+{
+  "integrationPoints": {
+    "exchange": [
+      "src/ui/bridge-interface",
+      "src/ui/warp-interface",
+      "src/api/gateway-client"
+    ],
+    "node": [
+      "src/native/lock-authority",
+      "src/native/receipt-engine"
+    ]
+  }
+}
