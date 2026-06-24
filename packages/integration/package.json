@@ -1,0 +1,9 @@
+{
+  "main": "src/index.ts",
+  "version": "0.0.0",
+  "dependencies": {
+    "@rannta-crosschain/warp": "0.0.0",
+    "@rannta-crosschain/core": "0.0.0"
+  },
+  "name": "@rannta-crosschain/integration"
+}
