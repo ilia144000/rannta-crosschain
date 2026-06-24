@@ -1,5 +1,11 @@
+export interface NativeBridgeEvent {
+  routeId: string;
+  receiptId: string;
+  reference: string;
+  amountBaseUnits: string;
+}
+
 export interface NodeIntegrationLayer {
-  onNativeLock(event: any): Promise<void>;
-  onNativeUnlock(event: any): Promise<void>;
+  observeNativeEvent(event: NativeBridgeEvent): Promise<void>;
   verifyReserveInvariant(): boolean;
 }
