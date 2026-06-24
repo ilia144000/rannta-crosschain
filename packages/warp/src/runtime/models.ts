@@ -1,11 +1,19 @@
+import { NetworkKey } from '@rannta-crosschain/core';
+
 export interface WarpIntent {
+  sourceNetwork: NetworkKey;
+  destinationNetwork: NetworkKey;
   sourceAsset: string;
   targetAsset: string;
-  amount: string;
+  amountBaseUnits: string;
+  recipient: string;
 }
 
+export type RoutePlanState = 'PLANNED' | 'CONFIGURED' | 'READY';
+
 export interface RoutePlan {
-  steps: string[];
-  providerId: string;
-  isExecutable: boolean;
+  routeId: string;
+  steps: readonly string[];
+  providerReferences: readonly string[];
+  state: RoutePlanState;
 }
