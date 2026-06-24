@@ -1,15 +1,27 @@
-export class BridgeReserveLedger {
-  private lockedRntx: string = '0';
-  private mintedWrntx: string = '0';
-  private capacityCeiling: string = '13000000'; // 13M wRNTX
+export interface BridgeReserveSnapshot {
+  configuredCapacity: string;
+  sourceBacked: string;
+  targetReleased: string;
+  targetReturned: string;
+  sourceRedeemed: string;
+}
 
-  getInvariants(): boolean {
-    return BigInt(this.mintedWrntx) <= BigInt(this.lockedRntx) &&
-           BigInt(this.mintedWrntx) <= BigInt(this.capacityCeiling);
+export class BridgeReserveLedger {
+  private snapshot: BridgeReserveSnapshot = {
+    configuredCapacity: '13000000',
+    sourceBacked: '0',
+    targetReleased: '0',
+    targetReturned: '0',
+    sourceRedeemed: '0'
+  };
+
+  getSnapshot(): Readonly<BridgeReserveSnapshot> {
+    return { ...this.snapshot };
   }
 
-  updateLedger(locked: string, minted: string) {
-    this.lockedRntx = locked;
-    this.mintedWrntx = minted;
+  isConsistent(): boolean {
+    return BigInt(this.snapshot.targetReleased) <= BigInt(this.snapshot.sourceBacked)
+      && BigInt(this.snapshot.targetReleased) <= BigInt(this.snapshot.configuredCapacity)
+      && BigInt(this.snapshot.sourceRedeemed) <= BigInt(this.snapshot.targetReturned);
   }
 }
