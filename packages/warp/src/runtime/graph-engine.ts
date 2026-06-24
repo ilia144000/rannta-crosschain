@@ -1,12 +1,13 @@
-import { WarpIntent, RoutePlan } from './models';
+import { createRouteId } from '@rannta-crosschain/core';
+import { RoutePlan, WarpIntent } from './models';
 
 export class RouteGraphEngine {
-  // Deterministic calculation based on static capability data
   static planRoute(intent: WarpIntent): RoutePlan {
     return {
-      steps: ['SOURCE_LOCK', 'BRIDGE_TRANSFER', 'DESTINATION_MINT'],
-      providerId: 'INTERNAL_RANNTA_BRIDGE',
-      isExecutable: true
+      routeId: createRouteId(intent.sourceNetwork, intent.destinationNetwork),
+      steps: ['SOURCE', 'ROUTE_DISCOVERY', 'DESTINATION'],
+      providerReferences: [],
+      state: 'PLANNED'
     };
   }
 }
