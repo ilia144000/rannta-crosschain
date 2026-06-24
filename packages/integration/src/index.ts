@@ -1,2 +1,2 @@
-export * from './exchange-proxy';
-export * from './node-proxy';
+export * from './exchange-connector';
+export * from './node-connector';
