@@ -1,11 +1,18 @@
-import { IChainAdapter } from './IChainAdapter';
+export interface RouteSearchRequest {
+  sourceNetwork: string;
+  destinationNetwork: string;
+  amountBaseUnits: string;
+  sourceAsset: string;
+  destinationAsset: string;
+}
 
-export interface IRoute {
-  path: string[];
-  expectedOutput: string;
-  fee: string;
+export interface RouteSearchResult {
+  routeId: string;
+  providerReferences: readonly string[];
+  expectedOutputBaseUnits: string | null;
+  feeBaseUnits: string | null;
 }
 
 export interface IRouter {
-  findBestRoute(fromChain: number, toChain: number, amount: string): Promise<IRoute>;
+  findBestRoute(request: RouteSearchRequest): Promise<RouteSearchResult>;
 }
