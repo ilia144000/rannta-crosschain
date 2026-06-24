@@ -1,17 +1,22 @@
-import { Network, AssetIdentity } from '@rannta-crosschain/core';
-import { QuoteNormalization } from '@rannta-crosschain/warp';
+import { AssetIdentity, NetworkKey } from '@rannta-crosschain/core';
 
 export interface ProviderQuoteRequest {
-  sourceNetwork: Network;
-  targetNetwork: Network;
+  sourceNetwork: NetworkKey;
+  destinationNetwork: NetworkKey;
   sourceAsset: AssetIdentity;
-  targetAsset: AssetIdentity;
-  amount: string;
+  destinationAsset: AssetIdentity;
+  amountBaseUnits: string;
 }
 
-export interface ExternalProvider {
+export interface ProviderQuote {
   providerId: string;
-  providerType: 'LIQUIDITY' | 'BRIDGE' | 'AGGREGATOR';
-  isAvailable(): boolean;
-  fetchQuote(request: ProviderQuoteRequest): Promise<QuoteNormalization>;
+  outputAmountBaseUnits: string;
+  feeAmountBaseUnits: string;
+  expiresAt: number;
+}
+
+export interface RouteProvider {
+  providerId: string;
+  providerType: 'BRIDGE' | 'DEX' | 'AGGREGATOR';
+  getQuote(request: ProviderQuoteRequest): Promise<ProviderQuote>;
 }
