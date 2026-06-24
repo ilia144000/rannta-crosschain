@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@rannta-crosschain/core": "0.0.0"
+  },
+  "name": "@rannta-crosschain/bridge",
+  "version": "0.0.0",
+  "main": "src/index.ts"
+}
