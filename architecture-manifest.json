@@ -1,27 +1,44 @@
 {
   "workspaceRoot": "C:\\rannta-network\\rannta-crosschain",
-  "initializedAt": "2026-06-24",
+  "architecture": "RANNTA Cross-Chain Core",
+  "mode": "LOCAL_FOUNDATION",
+  "networkScope": {
+    "networkCount": 14,
+    "directedRouteCount": 182
+  },
   "packages": [
     {
       "path": "packages/core",
       "name": "@rannta-crosschain/core",
-      "status": "STUBBED_CONTRACTS"
+      "responsibility": "network, asset, route, receipt, replay, state, and capability foundation"
     },
     {
       "path": "packages/warp",
       "name": "@rannta-crosschain/warp",
-      "status": "STUBBED_INTELLIGENCE"
+      "responsibility": "intent, route graph, quote normalization, ranking, provider abstraction, and execution planning"
     },
     {
       "path": "packages/bridge",
       "name": "@rannta-crosschain/bridge",
-      "status": "STUBBED_CANONICAL"
+      "responsibility": "canonical RNTX to wRNTX bridge accounting, receipts, replay, recovery, treasury, TON, and X-Chain boundaries"
     },
     {
       "path": "packages/gateway",
       "name": "@rannta-crosschain/gateway",
-      "status": "STUBBED_GATEWAY"
+      "responsibility": "typed local control-plane, route, capability, receipt, health, monitoring, and owner-control interfaces"
     }
   ],
-  "isolationLevel": "STRICT_OFFLINE_NO_DEPENDENCIES"
+  "canonicalBridge": {
+    "sourceAsset": "RNTX",
+    "sourceNetwork": "RANNTA_XCHAIN",
+    "targetAsset": "wRNTX",
+    "targetNetwork": "TON",
+    "representationModel": "PREMINTED_TREASURY_RESERVE",
+    "configuredCapacity": "13000000"
+  },
+  "repositoryPolicy": {
+    "integrationRepositories": "separate",
+    "productionCredentials": "absent",
+    "directCommitBranch": "master"
+  }
 }
