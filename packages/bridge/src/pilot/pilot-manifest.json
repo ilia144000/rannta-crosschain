@@ -1,0 +1,13 @@
+{
+  "pilotRoute": "RNTX_XCHAIN_TO_TON_JETTON",
+  "status": "DESIGN_ONLY",
+  "safetyConstraints": {
+    "maxTransactionValue": "1000.00",
+    "emergencyStopEnabled": true,
+    "requireOperatorApproval": true
+  },
+  "dryRunMode": {
+    "enabled": true,
+    "description": "Simulation of lock/release events without actual minting on TON"
+  }
+}
