@@ -1,0 +1,14 @@
+{
+  "project": "RANNTA-CROSSCHAIN-CORE",
+  "version": "1.0.0",
+  "activationPipeline": [
+    "PHASE_C11_PILOT_VALIDATION",
+    "PHASE_C12_CAPABILITY_PROVISIONING",
+    "DEPLOYMENT_READINESS"
+  ],
+  "networks": {
+    "RANNTA_XCHAIN": "PILOT_READY",
+    "TON": "PILOT_READY",
+    "DEFAULT": "NOT_PROVISIONED"
+  }
+}
