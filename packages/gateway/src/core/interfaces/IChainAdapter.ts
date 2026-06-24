@@ -1,7 +1,29 @@
+export interface ChainObservationRequest {
+  networkKey: string;
+  reference: string;
+}
+
+export interface ChainObservationResult {
+  reference: string;
+  observed: boolean;
+  finalized: boolean;
+  evidenceReference: string | null;
+}
+
+export interface ChainExecutionRequest {
+  routeId: string;
+  payloadReference: string;
+}
+
+export interface ChainExecutionResult {
+  requestId: string;
+  transactionReference: string | null;
+  acceptedAt: number;
+}
+
 export interface IChainAdapter {
-  chainId: number;
-  provider: any;
-  getBalance(address: string, token: string): Promise<string>;
-  getQuote(fromToken: string, toToken: string, amount: string): Promise<any>;
-  sendTransaction(txData: any): Promise<string>;
+  networkKey: string;
+  observe(request: ChainObservationRequest): Promise<ChainObservationResult>;
+  prepare(request: ChainExecutionRequest): Promise<ChainExecutionRequest>;
+  submit(request: ChainExecutionRequest): Promise<ChainExecutionResult>;
 }
