@@ -1,13 +1,8 @@
-import { CanonicalBridgeRuntime } from '../../../bridge/src/runtime/bridge-runtime';
 import { RouteGraphEngine } from '../../../warp/src/runtime/graph-engine';
+import { RoutePlan, WarpIntent } from '../../../warp/src/runtime/models';
 
 export class CrossChainGateway {
-  public bridge = new CanonicalBridgeRuntime();
-  
-  executeRoute(intent: any) {
-    if (!this.bridge.emergency.checkOperational()) {
-      throw new Error('GATEWAY_HALTED_BY_OWNER');
-    }
+  planWarpRoute(intent: WarpIntent): RoutePlan {
     return RouteGraphEngine.planRoute(intent);
   }
 }
