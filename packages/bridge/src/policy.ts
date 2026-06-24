@@ -1,26 +1,21 @@
-import { Network } from '@rannta-crosschain/core';
+import { NetworkKey } from '@rannta-crosschain/core';
 
 export interface AssetPolicy {
-  network: Network;
-  role: 'NATIVE_LOCK' | 'MAPPED_REPRESENTATION';
-  identifier: string;
+  network: NetworkKey;
+  role: 'SOURCE_REPRESENTATION' | 'TARGET_REPRESENTATION';
+  assetKey: string;
 }
 
 export interface CanonicalRouteDefinition {
   routeId: string;
   source: AssetPolicy;
   target: AssetPolicy;
-  isActive: boolean;
+  representationModel: 'PREMINTED_TREASURY_RESERVE';
 }
 
-export interface EmergencySuspensionModel {
-  isSuspended: boolean;
-  reason: string | null;
-  suspendedAt: number | null;
-  operatorId: string | null;
-}
-
-export interface OperatorApprovalModel {
-  requiredSignatures: number;
-  approvedOperators: string[];
+export interface BridgeConfiguration {
+  configuredCapacity: string;
+  treasuryReference: string | null;
+  sourceAuthorityReference: string | null;
+  destinationAuthorityReference: string | null;
 }
