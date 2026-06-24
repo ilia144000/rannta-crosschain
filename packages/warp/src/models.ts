@@ -1,24 +1,25 @@
-import { Network, AssetIdentity } from '@rannta-crosschain/core';
+import { AssetIdentity, NetworkKey } from '@rannta-crosschain/core';
 
 export interface UserIntent {
-  sourceNetwork: Network;
-  targetNetwork: Network;
+  sourceNetwork: NetworkKey;
+  targetNetwork: NetworkKey;
   sourceAsset: AssetIdentity;
   targetAsset: AssetIdentity;
-  amountIn: string;
+  amountBaseUnits: string;
+  recipient: string;
 }
 
 export interface RouteStep {
   stepIndex: number;
   action: 'SWAP' | 'BRIDGE';
-  sourceNetwork: Network;
-  targetNetwork: Network;
-  providerId: string;
+  sourceNetwork: NetworkKey;
+  targetNetwork: NetworkKey;
+  providerReference: string | null;
 }
 
 export interface RoutePlan {
   planId: string;
   intent: UserIntent;
-  steps: RouteStep[];
-  isExecutable: boolean;
+  steps: readonly RouteStep[];
+  providerReferences: readonly string[];
 }
