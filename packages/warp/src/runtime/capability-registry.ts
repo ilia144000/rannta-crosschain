@@ -1,11 +1,15 @@
 export class CapabilityRegistry {
-  private allowedProviders: Set<string> = new Set(['INTERNAL_RANNTA_BRIDGE']);
+  private readonly configured = new Set<string>();
 
-  isProviderAllowed(id: string): boolean {
-    return this.allowedProviders.has(id);
+  has(providerId: string): boolean {
+    return this.configured.has(providerId);
   }
-  
-  // Owner Controls
-  disableProvider(id: string) { this.allowedProviders.delete(id); }
-  enableProvider(id: string) { this.allowedProviders.add(id); }
+
+  configure(providerId: string): void {
+    this.configured.add(providerId);
+  }
+
+  unconfigure(providerId: string): void {
+    this.configured.delete(providerId);
+  }
 }
