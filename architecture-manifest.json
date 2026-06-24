@@ -1,0 +1,27 @@
+{
+  "workspaceRoot": "C:\\rannta-network\\rannta-crosschain",
+  "initializedAt": "2026-06-24",
+  "packages": [
+    {
+      "path": "packages/core",
+      "name": "@rannta-crosschain/core",
+      "status": "STUBBED_CONTRACTS"
+    },
+    {
+      "path": "packages/warp",
+      "name": "@rannta-crosschain/warp",
+      "status": "STUBBED_INTELLIGENCE"
+    },
+    {
+      "path": "packages/bridge",
+      "name": "@rannta-crosschain/bridge",
+      "status": "STUBBED_CANONICAL"
+    },
+    {
+      "path": "packages/gateway",
+      "name": "@rannta-crosschain/gateway",
+      "status": "STUBBED_GATEWAY"
+    }
+  ],
+  "isolationLevel": "STRICT_OFFLINE_NO_DEPENDENCIES"
+}
