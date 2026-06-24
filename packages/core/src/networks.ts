@@ -15,8 +15,25 @@ export const NETWORK_KEYS = [
   'APTOS'
 ] as const;
 
+export const NETWORK_LABELS = [
+  'RANNTA X-Chain',
+  'Bitcoin',
+  'Ethereum',
+  'Solana',
+  'TON',
+  'Base',
+  'BNB Smart Chain',
+  'Arbitrum',
+  'Fantom',
+  'Optimism',
+  'Avalanche',
+  'Polygon',
+  'TRON',
+  'Aptos'
+] as const;
+
 export type NetworkKey = typeof NETWORK_KEYS[number];
-export type Network = NetworkKey;
+export type Network = NetworkKey | typeof NETWORK_LABELS[number];
 
 export type ChainFamily =
   | 'RANNTA_NATIVE'
